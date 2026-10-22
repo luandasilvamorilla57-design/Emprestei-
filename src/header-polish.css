@@ -1,0 +1,144 @@
+/* Home header polish — compact, intentional mobile hierarchy */
+.topbar {
+  position: relative;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: start !important;
+  column-gap: 8px !important;
+  row-gap: 0 !important;
+  margin-bottom: 18px !important;
+}
+
+.topbar > div:first-child {
+  min-width: 0;
+}
+
+.topbar .eyebrow {
+  margin: 0 0 7px !important;
+  line-height: 1.1;
+}
+
+/* The old premium skin injected a second sentence after the H1.
+   Keep the copy, but move it into one intentional subtitle block. */
+.topbar h1::after {
+  content: none !important;
+  display: none !important;
+}
+
+.topbar h1 {
+  margin: 0 !important;
+  color: var(--premium-text) !important;
+  font-size: clamp(31px, 6vw, 44px) !important;
+  line-height: .98 !important;
+  letter-spacing: -.055em !important;
+  font-weight: 860 !important;
+  text-wrap: balance;
+}
+
+.welcome-subtitle {
+  margin: 11px 0 0 !important;
+  max-width: 390px;
+  color: var(--premium-muted) !important;
+  font-size: 13px !important;
+  line-height: 1.42 !important;
+  font-weight: 520 !important;
+  letter-spacing: -.01em;
+}
+
+.welcome-subtitle::before {
+  content: 'Que tal continuar fazendo seu dinheiro render hoje?';
+  display: block;
+  margin-bottom: 5px;
+  color: color-mix(in srgb, var(--premium-text) 78%, var(--premium-muted)) !important;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 760;
+  letter-spacing: -.012em;
+}
+
+.topbar .theme-toggle,
+.topbar .profile-pill {
+  align-self: start;
+}
+
+@media (max-width: 620px) {
+  .topbar {
+    display: block !important;
+    margin-bottom: 17px !important;
+  }
+
+  .topbar > div:first-child {
+    width: 100%;
+  }
+
+  /* Controls occupy the eyebrow row, leaving the greeting full-width below. */
+  .topbar .theme-toggle {
+    position: absolute !important;
+    top: 0;
+    right: 52px;
+    z-index: 3;
+  }
+
+  .topbar .profile-pill {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    z-index: 3;
+  }
+
+  .topbar .eyebrow {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding-right: 144px;
+    margin-bottom: 4px !important;
+  }
+
+  .topbar h1 {
+    width: 100%;
+    white-space: nowrap;
+    font-size: clamp(29px, 8.6vw, 36px) !important;
+    line-height: 1 !important;
+  }
+
+  .welcome-subtitle {
+    margin-top: 9px !important;
+    max-width: 315px;
+    font-size: 12.5px !important;
+    line-height: 1.38 !important;
+  }
+
+  .welcome-subtitle::before {
+    margin-bottom: 3px;
+    font-size: 12.5px;
+    line-height: 1.38;
+  }
+}
+
+@media (max-width: 390px) {
+  .topbar h1 {
+    font-size: 30px !important;
+    letter-spacing: -.06em !important;
+  }
+
+  .welcome-subtitle {
+    max-width: 290px;
+  }
+}
+
+@media (max-width: 340px) {
+  .topbar h1 {
+    font-size: 27px !important;
+  }
+
+  .topbar .theme-toggle {
+    right: 48px;
+    transform: scale(.94);
+    transform-origin: top right;
+  }
+
+  .topbar .profile-pill {
+    transform: scale(.94);
+    transform-origin: top right;
+  }
+}
