@@ -47,14 +47,14 @@ function NewLoanModalImpl({ clients, busy, onClose, onSubmit }: NewLoanProps) {
   async function submit(e: FormEvent) {
     e.preventDefault(); setError('');
     if (mode === 'existing' && !clientId) return setError('Selecione um cliente.');
-    if (mode === 'new' && (!name.trim() || !phone.trim())) return setError('Preencha nome e WhatsApp do cliente.');
+    if (mode === 'new' && !name.trim()) return setError('Informe o nome do cliente.');
     if (!principalNumber || !receivableNumber || !dueDate) return setError('Preencha os valores e a data de vencimento.');
     if (receivableNumber < principalNumber) return setError('O valor a receber não pode ser menor que o valor emprestado.');
     await onSubmit({ clientId: mode === 'existing' ? clientId : undefined, name: mode === 'new' ? name : undefined, phone: mode === 'new' ? phone : undefined, principal: principalNumber, receivable: receivableNumber, dueDate });
   }
   return <Modal onClose={onClose} eyebrow="Nova operação" title="Novo empréstimo"><form onSubmit={submit}>
     {clients.length > 0 && <div className="segmented"><button type="button" className={mode === 'existing' ? 'active' : ''} onClick={() => setMode('existing')}>Cliente existente</button><button type="button" className={mode === 'new' ? 'active' : ''} onClick={() => setMode('new')}>Novo cliente</button></div>}
-    {mode === 'existing' ? <label>Cliente<select value={clientId} onChange={(e) => setClientId(e.target.value)}>{clients.map((c) => <option key={c.id} value={c.id}>{c.name} · {c.phone}</option>)}</select></label> : <><label>Nome do cliente<input value={name} onChange={(e) => setName(e.target.value)} placeholder="Ex.: João da Silva" /></label><label>WhatsApp<input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(11) 99999-9999" inputMode="tel" /></label></>}
+    {mode === 'existing' ? <label>Cliente<select value={clientId} onChange={(e) => setClientId(e.target.value)}>{clients.map((c) => <option key={c.id} value={c.id}>{c.name} · {c.phone || 'sem WhatsApp'}</option>)}</select></label> : <><label>Nome do cliente<input value={name} onChange={(e) => setName(e.target.value)} placeholder="Ex.: João da Silva" /></label><label>WhatsApp <span style={{opacity:.65,fontWeight:700}}>(opcional)</span><input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(11) 99999-9999" inputMode="tel" /><small className="inline-note">Você pode deixar em branco. O Emprestei pedirá o número quando você tocar em “Enviar aviso”.</small></label></>}
     <div className="form-grid"><label>Valor emprestado<input value={principal} onChange={(e) => setPrincipal(e.target.value.replace(',', '.'))} placeholder="1000" inputMode="decimal" /></label><label>Valor a receber<input value={receivable} onChange={(e) => setReceivable(e.target.value.replace(',', '.'))} placeholder="1350" inputMode="decimal" /></label></div>
     <label>Vencimento<input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} /></label>
     <div className="profit-preview"><TrendingUp size={19} /><div><span>Juros combinados por ciclo</span><strong>{BRL.format(Math.max(profit, 0))} {principalNumber > 0 && `· ${Math.max(markup, 0).toFixed(0)}%`}</strong></div></div>
