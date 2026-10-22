@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import App from './AppV2';
 import './styles.css';
 import './enhancements.css';
 import './premium.css';
+import './alerts-payments.css';
 import './pwa-install.css';
 import './theme';
 import './pwa-install';
