@@ -24,6 +24,7 @@ let clients: ClientRecord[] = [];
 let loans: LoanRecord[] = [];
 let payments: PaymentRecord[] = [];
 let decorateTimer = 0;
+let observer: MutationObserver | null = null;
 
 function dateFromKey(value: string) {
   const [year, month, day] = value.split('-').map(Number);
@@ -244,9 +245,14 @@ function decorateReminderButtons() {
 }
 
 function decorateAll() {
-  decorateClientCards();
-  decorateClientDetail();
-  decorateReminderButtons();
+  observer?.disconnect();
+  try {
+    decorateClientCards();
+    decorateClientDetail();
+    decorateReminderButtons();
+  } finally {
+    if (document.body && observer) observer.observe(document.body, { childList: true, subtree: true });
+  }
 }
 
 function scheduleDecorate() {
@@ -351,7 +357,7 @@ function interceptLegacyWhatsapp(event: MouseEvent) {
   void sendAlert(client, activeLoanFor(client.id));
 }
 
-const observer = new MutationObserver(scheduleDecorate);
+observer = new MutationObserver(scheduleDecorate);
 if (document.body) observer.observe(document.body, { childList: true, subtree: true });
 document.addEventListener('click', interceptLegacyWhatsapp, true);
 void refreshData();
