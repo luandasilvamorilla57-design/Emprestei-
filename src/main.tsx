@@ -4,7 +4,9 @@ import App from './App';
 import './styles.css';
 import './enhancements.css';
 import './premium.css';
+import './pwa-install.css';
 import './theme';
+import './pwa-install';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
