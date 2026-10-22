@@ -20,13 +20,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-          cache-dependency-path: package-lock.json
 
-      - name: Generate lockfile when missing
+      - name: Generate lockfile
         run: npm install --package-lock-only --ignore-scripts
 
-      - name: Commit lockfile
+      - name: Commit lockfile when missing
         if: github.event_name == 'push'
         run: |
           if ! git ls-files --error-unmatch package-lock.json >/dev/null 2>&1; then
