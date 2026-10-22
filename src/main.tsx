@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './global-modals';
 import App from './AppV3';
 import './styles.css';
 import './enhancements.css';
