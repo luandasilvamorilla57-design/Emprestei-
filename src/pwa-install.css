@@ -1,0 +1,84 @@
+.install-app-banner {
+  position: fixed;
+  z-index: 120;
+  left: 50%;
+  top: max(16px, env(safe-area-inset-top));
+  transform: translate(-50%, -18px) scale(.98);
+  width: min(560px, calc(100% - 24px));
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.13);
+  background: rgba(7, 22, 34, .94);
+  box-shadow: 0 24px 80px rgba(0,0,0,.42), 0 0 0 1px rgba(43,225,148,.04) inset;
+  backdrop-filter: blur(24px) saturate(1.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .22s ease, transform .22s ease;
+}
+
+.install-app-banner.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0) scale(1);
+}
+
+.install-app-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 17px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(28,210,133,.25);
+}
+
+.install-app-icon img { width: 100%; height: 100%; display: block; }
+.install-app-copy { min-width: 0; }
+.install-app-copy strong { display: block; color: #f3fff9; font-size: 14px; letter-spacing: -.01em; }
+.install-app-copy span { display: block; margin-top: 3px; color: #94aa9f; font-size: 11px; line-height: 1.4; }
+.install-app-copy b { color: #dfffee; }
+
+.install-app-action {
+  border: 0;
+  cursor: pointer;
+  border-radius: 13px;
+  padding: 11px 13px;
+  background: linear-gradient(145deg, #43e69a, #1dbd78);
+  color: #062117;
+  font-size: 11px;
+  font-weight: 950;
+  box-shadow: 0 10px 28px rgba(28,210,133,.22);
+}
+
+.install-app-close {
+  border: 0;
+  background: transparent;
+  color: #80948a;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+}
+
+html[data-theme='light'] .install-app-banner {
+  background: rgba(255,255,255,.96);
+  border-color: rgba(12,37,28,.08);
+  box-shadow: 0 22px 70px rgba(27,58,45,.16);
+}
+html[data-theme='light'] .install-app-copy strong { color: #0c251b; }
+html[data-theme='light'] .install-app-copy span { color: #6b8077; }
+html[data-theme='light'] .install-app-copy b { color: #0f5137; }
+
+@media (max-width: 520px) {
+  .install-app-banner {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    border-radius: 20px;
+    padding: 10px;
+  }
+  .install-app-icon { width: 46px; height: 46px; border-radius: 15px; }
+  .install-app-action { grid-column: 2; justify-self: start; margin-top: 2px; padding: 9px 12px; }
+  .install-app-close { grid-column: 3; grid-row: 1; align-self: start; }
+}
