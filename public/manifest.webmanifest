@@ -1,0 +1,19 @@
+{
+  "name": "Emprestei",
+  "short_name": "Emprestei",
+  "description": "Gestão premium de empréstimos particulares.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#16c47f",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/emprestei-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
