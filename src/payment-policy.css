@@ -1,0 +1,21 @@
+.payment-type-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.payment-type-grid > button:nth-child(3) {
+  display: none !important;
+}
+
+.toggle-line {
+  display: none !important;
+}
+
+.payment-explainer.warning::after {
+  content: 'Ao pagar somente os juros, o principal continua integralmente emprestado. No próximo ciclo, os mesmos juros voltam a vencer junto com o principal para quitação total.';
+  display: block;
+  grid-column: 1 / -1;
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: .78;
+}
