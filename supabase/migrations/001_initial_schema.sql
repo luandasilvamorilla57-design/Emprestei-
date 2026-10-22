@@ -1,13 +1,13 @@
 create extension if not exists pgcrypto;
 
-create table if not exists public.profiles (
+create table public.profiles (
   id uuid primary key references auth.users(id) on delete cascade,
   display_name text,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
 
-create table if not exists public.cash_accounts (
+create table public.cash_accounts (
   id uuid primary key default gen_random_uuid(),
   owner_id uuid not null references auth.users(id) on delete cascade,
   name text not null default 'Caixa principal',
@@ -16,7 +16,7 @@ create table if not exists public.cash_accounts (
   updated_at timestamptz not null default now()
 );
 
-create table if not exists public.clients (
+create table public.clients (
   id uuid primary key default gen_random_uuid(),
   owner_id uuid not null references auth.users(id) on delete cascade,
   name text not null,
@@ -26,7 +26,7 @@ create table if not exists public.clients (
   updated_at timestamptz not null default now()
 );
 
-create table if not exists public.loans (
+create table public.loans (
   id uuid primary key default gen_random_uuid(),
   owner_id uuid not null references auth.users(id) on delete cascade,
   client_id uuid not null references public.clients(id) on delete restrict,
@@ -40,7 +40,7 @@ create table if not exists public.loans (
   updated_at timestamptz not null default now()
 );
 
-create table if not exists public.payments (
+create table public.payments (
   id uuid primary key default gen_random_uuid(),
   owner_id uuid not null references auth.users(id) on delete cascade,
   loan_id uuid not null references public.loans(id) on delete cascade,
@@ -50,18 +50,23 @@ create table if not exists public.payments (
   created_at timestamptz not null default now()
 );
 
-create index if not exists clients_owner_idx on public.clients(owner_id);
-create index if not exists loans_owner_idx on public.loans(owner_id);
-create index if not exists loans_client_idx on public.loans(client_id);
-create index if not exists loans_due_date_idx on public.loans(due_date);
-create index if not exists payments_owner_idx on public.payments(owner_id);
-create index if not exists payments_loan_idx on public.payments(loan_id);
+create index cash_accounts_owner_idx on public.cash_accounts(owner_id);
+create index clients_owner_idx on public.clients(owner_id);
+create index loans_owner_idx on public.loans(owner_id);
+create index loans_client_idx on public.loans(client_id);
+create index loans_due_date_idx on public.loans(due_date);
+create index payments_owner_idx on public.payments(owner_id);
+create index payments_loan_idx on public.payments(loan_id);
 
 alter table public.profiles enable row level security;
 alter table public.cash_accounts enable row level security;
 alter table public.clients enable row level security;
 alter table public.loans enable row level security;
 alter table public.payments enable row level security;
+
+revoke all on public.profiles, public.cash_accounts, public.clients, public.loans, public.payments from anon;
+grant usage on schema public to authenticated;
+grant select, insert, update, delete on public.profiles, public.cash_accounts, public.clients, public.loans, public.payments to authenticated;
 
 create policy "profiles_owner_select" on public.profiles for select to authenticated using ((select auth.uid()) = id);
 create policy "profiles_owner_insert" on public.profiles for insert to authenticated with check ((select auth.uid()) = id);
@@ -78,13 +83,37 @@ create policy "clients_owner_update" on public.clients for update to authenticat
 create policy "clients_owner_delete" on public.clients for delete to authenticated using ((select auth.uid()) = owner_id);
 
 create policy "loans_owner_select" on public.loans for select to authenticated using ((select auth.uid()) = owner_id);
-create policy "loans_owner_insert" on public.loans for insert to authenticated with check ((select auth.uid()) = owner_id);
-create policy "loans_owner_update" on public.loans for update to authenticated using ((select auth.uid()) = owner_id) with check ((select auth.uid()) = owner_id);
+create policy "loans_owner_insert" on public.loans for insert to authenticated with check (
+  (select auth.uid()) = owner_id
+  and exists (
+    select 1 from public.clients c
+    where c.id = client_id and c.owner_id = (select auth.uid())
+  )
+);
+create policy "loans_owner_update" on public.loans for update to authenticated using ((select auth.uid()) = owner_id) with check (
+  (select auth.uid()) = owner_id
+  and exists (
+    select 1 from public.clients c
+    where c.id = client_id and c.owner_id = (select auth.uid())
+  )
+);
 create policy "loans_owner_delete" on public.loans for delete to authenticated using ((select auth.uid()) = owner_id);
 
 create policy "payments_owner_select" on public.payments for select to authenticated using ((select auth.uid()) = owner_id);
-create policy "payments_owner_insert" on public.payments for insert to authenticated with check ((select auth.uid()) = owner_id);
-create policy "payments_owner_update" on public.payments for update to authenticated using ((select auth.uid()) = owner_id) with check ((select auth.uid()) = owner_id);
+create policy "payments_owner_insert" on public.payments for insert to authenticated with check (
+  (select auth.uid()) = owner_id
+  and exists (
+    select 1 from public.loans l
+    where l.id = loan_id and l.owner_id = (select auth.uid())
+  )
+);
+create policy "payments_owner_update" on public.payments for update to authenticated using ((select auth.uid()) = owner_id) with check (
+  (select auth.uid()) = owner_id
+  and exists (
+    select 1 from public.loans l
+    where l.id = loan_id and l.owner_id = (select auth.uid())
+  )
+);
 create policy "payments_owner_delete" on public.payments for delete to authenticated using ((select auth.uid()) = owner_id);
 
 create or replace function public.set_updated_at()
