@@ -1,0 +1,151 @@
+/* Premium 5-item bottom navigation: Início | Clientes | + | Carteira | Caixa */
+.bottom-nav.bottom-nav-six {
+  grid-template-columns: 1fr 1fr 86px 1fr 1fr !important;
+  gap: 2px !important;
+  min-height: 76px;
+  padding: 8px 14px calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+  border-radius: 30px !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+  background: rgba(8, 22, 38, .90) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  backdrop-filter: blur(24px) saturate(150%);
+  box-shadow: 0 18px 48px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.05) !important;
+  overflow: visible !important;
+}
+
+/* Agenda remains available from Home; remove it only from the persistent nav. */
+.bottom-nav.bottom-nav-six > :nth-child(4) {
+  display: none !important;
+}
+
+.bottom-nav.bottom-nav-six .nav-button {
+  min-width: 0;
+  height: 58px;
+  border-radius: 18px;
+  gap: 5px !important;
+  transition: transform .18s ease, background .18s ease, color .18s ease;
+}
+
+.bottom-nav.bottom-nav-six .nav-button:active {
+  transform: scale(.94);
+}
+
+.bottom-nav.bottom-nav-six .nav-button svg {
+  width: 22px !important;
+  height: 22px !important;
+  stroke-width: 2.1;
+}
+
+.bottom-nav.bottom-nav-six .nav-button span {
+  display: block !important;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 10px !important;
+  font-weight: 750;
+  letter-spacing: -.01em;
+}
+
+.bottom-nav.bottom-nav-six .nav-button.active {
+  color: #45dfa0 !important;
+  background: linear-gradient(180deg, rgba(52,218,148,.11), rgba(52,218,148,.035));
+}
+
+.bottom-nav.bottom-nav-six .nav-main-action {
+  width: 70px !important;
+  height: 70px !important;
+  margin: 0 auto;
+  border-radius: 24px !important;
+  transform: translateY(-15px);
+  color: #04150e !important;
+  background: linear-gradient(155deg, #52efa8 0%, #25d884 48%, #17bd70 100%) !important;
+  border: 1px solid rgba(255,255,255,.30) !important;
+  box-shadow: 0 16px 34px rgba(27,205,121,.36), 0 5px 14px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.50) !important;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.bottom-nav.bottom-nav-six .nav-main-action:active {
+  transform: translateY(-12px) scale(.94);
+  box-shadow: 0 10px 24px rgba(27,205,121,.28), inset 0 1px 0 rgba(255,255,255,.38) !important;
+}
+
+.bottom-nav.bottom-nav-six .nav-main-action svg {
+  width: 29px;
+  height: 29px;
+  stroke-width: 2.35;
+}
+
+/* Make Agenda an obvious premium shortcut in the Home card instead of a nav item. */
+.section-card .section-heading .section-icon-button {
+  width: auto !important;
+  min-width: 40px;
+  padding: 0 12px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 14px !important;
+  color: #49dca0;
+  background: rgba(45,211,139,.09) !important;
+  border: 1px solid rgba(45,211,139,.16) !important;
+}
+
+.section-card .section-heading .section-icon-button::after {
+  content: "Agenda";
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .01em;
+}
+
+html[data-theme="light"] .bottom-nav.bottom-nav-six {
+  background: rgba(255,255,255,.93) !important;
+  border-color: rgba(26,61,82,.08) !important;
+  box-shadow: 0 16px 44px rgba(32,72,92,.14), inset 0 1px 0 rgba(255,255,255,.95) !important;
+}
+
+html[data-theme="light"] .bottom-nav.bottom-nav-six .nav-button.active {
+  color: #159e65 !important;
+  background: linear-gradient(180deg, rgba(31,190,119,.09), rgba(31,190,119,.025));
+}
+
+html[data-theme="light"] .section-card .section-heading .section-icon-button {
+  color: #128b5b;
+  background: rgba(25,172,105,.07) !important;
+  border-color: rgba(25,172,105,.13) !important;
+}
+
+@media (max-width: 430px) {
+  .bottom-nav.bottom-nav-six {
+    grid-template-columns: 1fr 1fr 78px 1fr 1fr !important;
+    min-height: 72px;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    border-radius: 27px !important;
+  }
+  .bottom-nav.bottom-nav-six .nav-main-action {
+    width: 64px !important;
+    height: 64px !important;
+    border-radius: 22px !important;
+    transform: translateY(-13px);
+  }
+  .bottom-nav.bottom-nav-six .nav-button {
+    height: 54px;
+  }
+  .bottom-nav.bottom-nav-six .nav-button svg {
+    width: 21px !important;
+    height: 21px !important;
+  }
+  .bottom-nav.bottom-nav-six .nav-button span {
+    font-size: 9px !important;
+  }
+}
+
+@media (max-width: 350px) {
+  .bottom-nav.bottom-nav-six .nav-button span {
+    font-size: 8px !important;
+  }
+  .section-card .section-heading .section-icon-button::after {
+    display: none;
+  }
+}
