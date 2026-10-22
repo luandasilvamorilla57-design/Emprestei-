@@ -1,16 +1,46 @@
 /* Premium 5-item bottom navigation: Início | Clientes | + | Carteira | Caixa */
 .bottom-nav.bottom-nav-six {
-  grid-template-columns: 1fr 1fr 86px 1fr 1fr !important;
-  gap: 2px !important;
-  min-height: 76px;
-  padding: 8px 14px calc(8px + env(safe-area-inset-bottom, 0px)) !important;
-  border-radius: 30px !important;
-  border: 1px solid rgba(255,255,255,.08) !important;
-  background: rgba(8, 22, 38, .90) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(150%);
-  backdrop-filter: blur(24px) saturate(150%);
-  box-shadow: 0 18px 48px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.05) !important;
+  position: fixed;
+  grid-template-columns: 1fr 1fr 90px 1fr 1fr !important;
+  gap: 3px !important;
+  min-height: 78px;
+  padding: 9px 14px calc(9px + env(safe-area-inset-bottom, 0px)) !important;
+  border-radius: 31px !important;
+  border: 1px solid rgba(255,255,255,.09) !important;
+  background:
+    linear-gradient(180deg, rgba(17,35,52,.92), rgba(8,22,38,.88)) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(170%);
+  backdrop-filter: blur(28px) saturate(170%);
+  box-shadow:
+    0 22px 54px rgba(0,0,0,.36),
+    0 2px 0 rgba(255,255,255,.025) inset,
+    inset 0 1px 0 rgba(255,255,255,.07) !important;
   overflow: visible !important;
+  isolation: isolate;
+}
+
+.bottom-nav.bottom-nav-six::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 50% -20%, rgba(61,222,151,.11), transparent 38%),
+    linear-gradient(90deg, transparent 0%, rgba(255,255,255,.025) 48%, transparent 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bottom-nav.bottom-nav-six::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.23), transparent);
+  opacity: .75;
+  pointer-events: none;
 }
 
 /* Agenda remains available from Home; remove it only from the persistent nav. */
@@ -19,11 +49,28 @@
 }
 
 .bottom-nav.bottom-nav-six .nav-button {
+  position: relative;
   min-width: 0;
   height: 58px;
   border-radius: 18px;
   gap: 5px !important;
-  transition: transform .18s ease, background .18s ease, color .18s ease;
+  color: #7f94a9 !important;
+  transition: transform .18s ease, background .22s ease, color .22s ease, box-shadow .22s ease;
+}
+
+.bottom-nav.bottom-nav-six .nav-button::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: #36d891;
+  box-shadow: 0 0 12px rgba(54,216,145,.56);
+  opacity: 0;
+  transform: translateX(-50%) scale(.55);
+  transition: opacity .2s ease, transform .2s ease;
 }
 
 .bottom-nav.bottom-nav-six .nav-button:active {
@@ -33,7 +80,8 @@
 .bottom-nav.bottom-nav-six .nav-button svg {
   width: 22px !important;
   height: 22px !important;
-  stroke-width: 2.1;
+  stroke-width: 2.05;
+  transition: transform .2s ease, filter .2s ease;
 }
 
 .bottom-nav.bottom-nav-six .nav-button span {
@@ -43,37 +91,26 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 10px !important;
-  font-weight: 750;
+  font-weight: 760;
   letter-spacing: -.01em;
 }
 
 .bottom-nav.bottom-nav-six .nav-button.active {
-  color: #45dfa0 !important;
-  background: linear-gradient(180deg, rgba(52,218,148,.11), rgba(52,218,148,.035));
+  color: #51e0a2 !important;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(67,225,160,.16), transparent 60%),
+    linear-gradient(180deg, rgba(52,218,148,.10), rgba(52,218,148,.025));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.035);
 }
 
-.bottom-nav.bottom-nav-six .nav-main-action {
-  width: 70px !important;
-  height: 70px !important;
-  margin: 0 auto;
-  border-radius: 24px !important;
-  transform: translateY(-15px);
-  color: #04150e !important;
-  background: linear-gradient(155deg, #52efa8 0%, #25d884 48%, #17bd70 100%) !important;
-  border: 1px solid rgba(255,255,255,.30) !important;
-  box-shadow: 0 16px 34px rgba(27,205,121,.36), 0 5px 14px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.50) !important;
-  transition: transform .18s ease, box-shadow .18s ease;
+.bottom-nav.bottom-nav-six .nav-button.active::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
 }
 
-.bottom-nav.bottom-nav-six .nav-main-action:active {
-  transform: translateY(-12px) scale(.94);
-  box-shadow: 0 10px 24px rgba(27,205,121,.28), inset 0 1px 0 rgba(255,255,255,.38) !important;
-}
-
-.bottom-nav.bottom-nav-six .nav-main-action svg {
-  width: 29px;
-  height: 29px;
-  stroke-width: 2.35;
+.bottom-nav.bottom-nav-six .nav-button.active svg {
+  transform: translateY(-1px);
+  filter: drop-shadow(0 0 7px rgba(64,222,158,.20));
 }
 
 /* Make Agenda an obvious premium shortcut in the Home card instead of a nav item. */
@@ -99,14 +136,30 @@
 }
 
 html[data-theme="light"] .bottom-nav.bottom-nav-six {
-  background: rgba(255,255,255,.93) !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.94), rgba(248,252,250,.90)) !important;
   border-color: rgba(26,61,82,.08) !important;
-  box-shadow: 0 16px 44px rgba(32,72,92,.14), inset 0 1px 0 rgba(255,255,255,.95) !important;
+  box-shadow:
+    0 20px 50px rgba(32,72,92,.15),
+    0 2px 0 rgba(255,255,255,.72) inset,
+    inset 0 1px 0 rgba(255,255,255,.95) !important;
+}
+
+html[data-theme="light"] .bottom-nav.bottom-nav-six::before {
+  background:
+    radial-gradient(circle at 50% -20%, rgba(37,198,128,.09), transparent 38%),
+    linear-gradient(90deg, transparent 0%, rgba(255,255,255,.28) 48%, transparent 100%);
+}
+
+html[data-theme="light"] .bottom-nav.bottom-nav-six .nav-button {
+  color: #71879a !important;
 }
 
 html[data-theme="light"] .bottom-nav.bottom-nav-six .nav-button.active {
   color: #159e65 !important;
-  background: linear-gradient(180deg, rgba(31,190,119,.09), rgba(31,190,119,.025));
+  background:
+    radial-gradient(circle at 50% 0%, rgba(31,190,119,.13), transparent 60%),
+    linear-gradient(180deg, rgba(31,190,119,.08), rgba(31,190,119,.02));
 }
 
 html[data-theme="light"] .section-card .section-heading .section-icon-button {
@@ -117,25 +170,26 @@ html[data-theme="light"] .section-card .section-heading .section-icon-button {
 
 @media (max-width: 430px) {
   .bottom-nav.bottom-nav-six {
-    grid-template-columns: 1fr 1fr 78px 1fr 1fr !important;
-    min-height: 72px;
+    grid-template-columns: 1fr 1fr 82px 1fr 1fr !important;
+    min-height: 74px;
     padding-left: 10px !important;
     padding-right: 10px !important;
-    border-radius: 27px !important;
+    border-radius: 28px !important;
   }
-  .bottom-nav.bottom-nav-six .nav-main-action {
-    width: 64px !important;
-    height: 64px !important;
-    border-radius: 22px !important;
-    transform: translateY(-13px);
+
+  .bottom-nav.bottom-nav-six::before {
+    border-radius: 27px;
   }
+
   .bottom-nav.bottom-nav-six .nav-button {
     height: 54px;
   }
+
   .bottom-nav.bottom-nav-six .nav-button svg {
     width: 21px !important;
     height: 21px !important;
   }
+
   .bottom-nav.bottom-nav-six .nav-button span {
     font-size: 9px !important;
   }
@@ -145,6 +199,7 @@ html[data-theme="light"] .section-card .section-heading .section-icon-button {
   .bottom-nav.bottom-nav-six .nav-button span {
     font-size: 8px !important;
   }
+
   .section-card .section-heading .section-icon-button::after {
     display: none;
   }
