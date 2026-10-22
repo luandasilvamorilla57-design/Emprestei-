@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './global-modals';
 import App from './AppV3';
 import './styles.css';
 import './enhancements.css';
@@ -11,10 +10,13 @@ import './pro-suite.css';
 import './nav-polish.css';
 import './header-polish.css';
 import './money-button.css';
-import './loading-premium.css';
 import './pwa-install.css';
+import './loading-premium.css';
+import './client-experience.css';
 import './theme';
 import './pwa-install';
+import './global-modals';
+import './client-experience';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
