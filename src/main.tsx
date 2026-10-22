@@ -11,6 +11,7 @@ import './pro-suite.css';
 import './nav-polish.css';
 import './header-polish.css';
 import './money-button.css';
+import './loading-premium.css';
 import './pwa-install.css';
 import './theme';
 import './pwa-install';
