@@ -14,10 +14,13 @@ import './pwa-install.css';
 import './loading-premium.css';
 import './client-experience.css';
 import './client-badge-polish.css';
+import './fintech-actions.css';
+import './receipts-experience.css';
 import './theme';
 import './pwa-install';
 import './global-modals';
 import './client-experience';
+import './receipts-experience';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
