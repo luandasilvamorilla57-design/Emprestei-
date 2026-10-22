@@ -5,6 +5,7 @@ import './styles.css';
 import './enhancements.css';
 import './premium.css';
 import './alerts-payments.css';
+import './payment-policy.css';
 import './pwa-install.css';
 import './theme';
 import './pwa-install';
