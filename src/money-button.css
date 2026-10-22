@@ -1,20 +1,13 @@
-/* Premium central action: realistic R$100 bundle, self-contained and cache-safe */
+/* Premium central action: real R$100 note from Banco Central */
 .bottom-nav.bottom-nav-six .nav-main-action {
   position: relative;
   overflow: visible;
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: 0 20px 42px rgba(12,154,91,.34), 0 7px 18px rgba(0,0,0,.16) !important;
-}
-
-.bottom-nav.bottom-nav-six .nav-main-action::after {
-  content: "";
-  position: absolute;
-  inset: -7px;
-  border-radius: 30px;
-  border: 1px solid rgba(44,221,139,.18);
-  box-shadow: 0 0 30px rgba(35,213,130,.22);
-  pointer-events: none;
+  background: linear-gradient(155deg, #43e49a 0%, #20cc7d 55%, #149e61 100%) !important;
+  border: 1px solid rgba(255,255,255,.40) !important;
+  box-shadow:
+    0 20px 42px rgba(12,154,91,.34),
+    0 7px 18px rgba(0,0,0,.16),
+    inset 0 1px 0 rgba(255,255,255,.48) !important;
 }
 
 .bottom-nav.bottom-nav-six .nav-main-action svg {
@@ -23,35 +16,63 @@
 
 .bottom-nav.bottom-nav-six .nav-main-action::before {
   content: "";
-  width: 72px;
-  height: 72px;
-  display: block;
-  border-radius: 24px;
-  background-image: url("data:image/jpeg;base64,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");
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 52px;
+  height: 25px;
+  border-radius: 4px;
+  background-image: url("https://www.bcb.gov.br/novasnotas/assets/img/section/100/100_front.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: 0 16px 28px rgba(5,110,66,.34), inset 0 1px 0 rgba(255,255,255,.55);
-  transform: translateY(-1px);
-  transition: transform .18s ease;
+  transform: translate(-50%, -52%) rotate(-5deg);
+  box-shadow:
+    0 3px 0 rgba(216,235,232,.98),
+    0 6px 0 rgba(199,224,219,.96),
+    0 9px 0 rgba(181,211,204,.94),
+    0 13px 18px rgba(0,73,43,.28);
+  filter: saturate(1.06) contrast(1.02);
+  transition: transform .18s ease, filter .18s ease;
+  z-index: 2;
 }
 
-.bottom-nav.bottom-nav-six .nav-main-action:hover::before {
-  transform: translateY(-3px) scale(1.03);
+.bottom-nav.bottom-nav-six .nav-main-action::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 35px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #ffd86b 0%, #f1b93f 52%, #cf8d21 100%);
+  border: 1px solid rgba(137,85,12,.22);
+  box-shadow: inset 1px 0 0 rgba(255,255,255,.48), 0 2px 5px rgba(72,43,0,.18);
+  transform: translate(-50%, -50%) rotate(-5deg);
+  z-index: 3;
+  pointer-events: none;
 }
 
-.bottom-nav.bottom-nav-six .nav-main-action:active::before {
-  transform: translateY(1px) scale(.95);
+.bottom-nav.bottom-nav-six .nav-main-action:active::before,
+.bottom-nav.bottom-nav-six .nav-main-action:active::after {
+  transform: translate(-50%, -47%) rotate(-3deg) scale(.95);
+}
+
+html[data-theme="light"] .bottom-nav.bottom-nav-six .nav-main-action {
+  background: linear-gradient(155deg, #59e9aa 0%, #29d487 55%, #18a968 100%) !important;
+  box-shadow:
+    0 18px 38px rgba(21,177,105,.25),
+    0 6px 15px rgba(40,92,68,.14),
+    inset 0 1px 0 rgba(255,255,255,.72) !important;
 }
 
 @media (max-width: 430px) {
   .bottom-nav.bottom-nav-six .nav-main-action::before {
-    width: 64px;
-    height: 64px;
-    border-radius: 22px;
+    width: 48px;
+    height: 23px;
   }
   .bottom-nav.bottom-nav-six .nav-main-action::after {
-    inset: -6px;
-    border-radius: 27px;
+    width: 9px;
+    height: 32px;
   }
 }
