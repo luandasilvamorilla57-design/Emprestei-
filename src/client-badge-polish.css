@@ -1,0 +1,95 @@
+.client-card-rich .client-name-line{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  gap:5px!important;
+}
+
+.client-card-rich .risk-badge.compact{
+  width:max-content!important;
+  min-height:0!important;
+  padding:3px 8px 3px 7px!important;
+  border:0!important;
+  border-radius:999px!important;
+  gap:5px!important;
+  font-size:9px!important;
+  line-height:1!important;
+  font-weight:800!important;
+  letter-spacing:.01em!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+}
+
+.client-card-rich .risk-badge.compact svg{
+  width:10px!important;
+  height:10px!important;
+  stroke-width:2.2!important;
+}
+
+.client-card-rich .risk-badge.compact.risk-new{
+  position:relative;
+  padding-left:15px!important;
+  background:rgba(67,137,212,.07)!important;
+  color:#6885a0!important;
+}
+
+.client-card-rich .risk-badge.compact.risk-new svg{
+  display:none!important;
+}
+
+.client-card-rich .risk-badge.compact.risk-new::before{
+  content:"";
+  position:absolute;
+  left:7px;
+  top:50%;
+  width:5px;
+  height:5px;
+  margin-top:-2.5px;
+  border-radius:50%;
+  background:#5a9ee3;
+  box-shadow:0 0 0 3px rgba(90,158,227,.09);
+}
+
+.client-card-rich .risk-badge.compact.risk-good{
+  background:rgba(35,193,119,.08)!important;
+  color:#2a9c6b!important;
+}
+
+.client-card-rich .risk-badge.compact.risk-watch{
+  background:rgba(229,171,45,.09)!important;
+  color:#a77a19!important;
+}
+
+.client-card-rich .risk-badge.compact.risk-risk{
+  background:rgba(224,79,79,.08)!important;
+  color:#c55151!important;
+}
+
+html[data-theme="dark"] .client-card-rich .risk-badge.compact.risk-new{
+  background:rgba(83,157,226,.10)!important;
+  color:#9bb7cf!important;
+}
+
+html[data-theme="dark"] .client-card-rich .risk-badge.compact.risk-good{
+  background:rgba(38,211,132,.10)!important;
+  color:#67dca4!important;
+}
+
+html[data-theme="dark"] .client-card-rich .risk-badge.compact.risk-watch{
+  background:rgba(255,196,80,.10)!important;
+  color:#e0b45e!important;
+}
+
+html[data-theme="dark"] .client-card-rich .risk-badge.compact.risk-risk{
+  background:rgba(255,91,91,.10)!important;
+  color:#ef8a8a!important;
+}
+
+@media(max-width:720px){
+  .client-card-rich .client-name-line{gap:4px!important}
+  .client-card-rich .risk-badge.compact{
+    font-size:8.5px!important;
+    padding-top:3px!important;
+    padding-bottom:3px!important;
+  }
+}
