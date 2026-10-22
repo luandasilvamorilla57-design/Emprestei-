@@ -16,11 +16,13 @@ import './client-experience.css';
 import './client-badge-polish.css';
 import './fintech-actions.css';
 import './receipts-experience.css';
+import './app-refinement.css';
 import './theme';
 import './pwa-install';
 import './global-modals';
 import './client-experience';
 import './receipts-experience';
+import './receipt-share-upgrade';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'emprestei-shell-v13';
+const CACHE_NAME = 'emprestei-shell-v14';
 const APP_SHELL = ['/', '/index.html', '/manifest.webmanifest', '/emprestei-icon.svg'];
 
 self.addEventListener('install', (event) => {

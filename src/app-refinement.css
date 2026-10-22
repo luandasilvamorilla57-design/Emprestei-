@@ -1,0 +1,204 @@
+:root{
+  --ref-green:#18bf73;
+  --ref-green-2:#0c9e60;
+  --ref-ink:#071725;
+  --ref-muted:#7790a5;
+  --ref-line:rgba(25,58,78,.09);
+  --ref-shadow:0 18px 48px rgba(34,67,88,.09);
+  --ref-shadow-soft:0 10px 28px rgba(34,67,88,.06);
+}
+
+html,body,#root{min-height:100%}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+button,input,select,textarea{font:inherit}
+button{-webkit-tap-highlight-color:transparent}
+
+.app-shell{isolation:isolate}
+.app-shell::before{
+  content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;
+  background:
+    radial-gradient(circle at 8% 10%,rgba(78,180,235,.09),transparent 27%),
+    radial-gradient(circle at 92% 20%,rgba(31,208,131,.10),transparent 30%),
+    radial-gradient(circle at 55% 92%,rgba(62,205,151,.07),transparent 34%);
+}
+.app-content{padding-bottom:132px!important}
+.ambient{opacity:.13!important;filter:blur(110px)!important}
+
+.eyebrow,.risk-kicker,.receipts-kicker{
+  font-weight:900!important;letter-spacing:.16em!important
+}
+.topbar,.page-header{margin-bottom:24px!important}
+.topbar h1,.page-header h1,.detail-person h1{
+  letter-spacing:-.048em!important;font-weight:900!important
+}
+.page-header h1{font-size:clamp(30px,7vw,42px)!important}
+
+.hero-card{
+  border-radius:34px!important;
+  border:1px solid rgba(255,255,255,.18)!important;
+  box-shadow:0 30px 70px rgba(4,76,53,.18),inset 0 1px 0 rgba(255,255,255,.14)!important;
+  background:linear-gradient(145deg,#0fa268 0%,#07885a 48%,#056f4b 100%)!important;
+  overflow:hidden!important;
+}
+.hero-card::before{
+  content:""!important;position:absolute!important;inset:-45% -24% auto auto!important;
+  width:82%!important;height:160%!important;border-radius:50%!important;
+  background:linear-gradient(115deg,transparent 22%,rgba(255,255,255,.09) 48%,transparent 70%)!important;
+  transform:rotate(16deg)!important;animation:refHeroSheen 8s ease-in-out infinite!important;pointer-events:none!important
+}
+.hero-card::after{opacity:.6!important}
+.hero-card>strong{letter-spacing:-.065em!important;text-shadow:0 5px 24px rgba(0,0,0,.10)}
+.hero-foot button{
+  border-radius:20px!important;box-shadow:0 10px 28px rgba(0,0,0,.09)!important;
+  transition:transform .16s ease,box-shadow .16s ease!important
+}
+.hero-foot button:active{transform:scale(.985)!important}
+
+.metric-card,.client-card-rich,.loan-row,.reminder-card,.detail-section,.client-stats,.risk-panel,.profit-suite,.calendar-card,.calendar-summary,.receipts-section{
+  border-color:var(--ref-line)!important;
+  box-shadow:var(--ref-shadow)!important;
+}
+.metric-card{
+  border-radius:27px!important;position:relative!important;overflow:hidden!important;
+  background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(247,251,253,.89))!important;
+  transition:transform .18s ease,box-shadow .18s ease!important
+}
+.metric-card::after{
+  content:"";position:absolute;inset:auto -34px -48px auto;width:100px;height:100px;border-radius:50%;
+  background:radial-gradient(circle,rgba(59,151,230,.09),transparent 68%);pointer-events:none
+}
+.metric-card:active{transform:scale(.985)}
+.metric-icon{border-radius:17px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+
+.client-card-rich{
+  border-radius:30px!important;background:rgba(255,255,255,.92)!important;
+  backdrop-filter:blur(18px)!important;padding:18px!important
+}
+.client-card-rich .avatar{box-shadow:0 12px 28px rgba(10,139,88,.16),inset 0 1px 0 rgba(255,255,255,.25)!important}
+.client-smart-actions{border-top-color:rgba(35,71,92,.07)!important}
+.client-due-pill{border-radius:16px!important}
+.client-send-alert{border-radius:17px!important;min-height:48px!important}
+
+.client-detail{gap:18px!important}
+.detail-header{padding-top:4px!important}
+.detail-back,.section-icon-button,.calendar-toolbar button,.icon-btn{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.46),0 8px 20px rgba(30,60,80,.06)!important;
+  transition:transform .16s ease,background .16s ease!important
+}
+.detail-back:active,.section-icon-button:active,.icon-btn:active{transform:scale(.95)}
+.risk-panel,.detail-section,.client-stats,.profit-suite,.calendar-card,.calendar-summary,.receipts-section{border-radius:30px!important}
+.client-stats>div,.profit-kpis>div,.calendar-summary>div{border:1px solid rgba(25,58,78,.055)!important}
+.client-loan-card{border-radius:23px!important;background:linear-gradient(145deg,rgba(248,251,253,.98),rgba(241,247,250,.90))!important}
+
+.loan-row,.reminder-card{
+  border-radius:24px!important;background:rgba(255,255,255,.91)!important;
+  backdrop-filter:blur(16px)!important;transition:transform .18s ease,box-shadow .18s ease!important
+}
+.loan-row:active,.reminder-card:active{transform:scale(.99)}
+.status{border-radius:999px!important;padding:5px 9px!important;font-weight:900!important}
+
+.modal-backdrop{backdrop-filter:blur(18px)!important;background:rgba(4,14,23,.50)!important}
+.modal-card{
+  border-radius:34px 34px 26px 26px!important;
+  border:1px solid rgba(255,255,255,.72)!important;
+  box-shadow:0 34px 100px rgba(0,0,0,.28)!important;
+  background:linear-gradient(180deg,#fbfdfe,#f4f8fa)!important
+}
+.modal-handle{width:72px!important;height:5px!important;border-radius:999px!important;opacity:.9!important}
+.modal-header{padding-bottom:8px!important}
+.modal-header h2{letter-spacing:-.045em!important}
+.modal-card label{font-weight:800!important;color:#698196!important}
+.modal-card input,.modal-card select,.modal-card textarea{
+  border-radius:17px!important;border:1px solid rgba(38,70,90,.11)!important;
+  background:#fff!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 6px 16px rgba(30,60,80,.025)!important;
+  transition:border-color .16s ease,box-shadow .16s ease!important
+}
+.modal-card input:focus,.modal-card select:focus,.modal-card textarea:focus{
+  border-color:rgba(22,184,109,.45)!important;box-shadow:0 0 0 4px rgba(24,191,115,.08)!important;outline:0!important
+}
+.segmented{padding:4px!important;border-radius:17px!important;background:rgba(83,111,130,.07)!important}
+.segmented button{border-radius:13px!important;font-weight:850!important}
+.segmented button.active{background:#fff!important;box-shadow:0 7px 20px rgba(40,70,90,.08)!important}
+.primary-action{
+  min-height:54px!important;border-radius:18px!important;
+  background:linear-gradient(145deg,#3ee394,#16b96d)!important;
+  box-shadow:0 15px 32px rgba(22,184,107,.23),inset 0 1px 0 rgba(255,255,255,.32)!important;
+  font-weight:950!important;letter-spacing:-.01em!important
+}
+.primary-action:active{transform:scale(.985)!important}
+
+.bottom-nav{
+  border-radius:30px!important;border:1px solid rgba(255,255,255,.75)!important;
+  background:rgba(255,255,255,.84)!important;backdrop-filter:blur(24px) saturate(1.25)!important;
+  box-shadow:0 22px 54px rgba(30,64,86,.15),inset 0 1px 0 rgba(255,255,255,.82)!important
+}
+.nav-button{transition:transform .15s ease,color .15s ease!important}
+.nav-button:active{transform:scale(.94)!important}
+.nav-button.active{font-weight:900!important}
+
+.receipt-modal{box-shadow:0 34px 100px rgba(0,0,0,.34)!important}
+.receipt-paper{box-shadow:0 20px 54px rgba(31,63,84,.11)!important}
+.receipt-share-hint{
+  margin:0 14px 12px;padding:12px 14px;border-radius:18px;
+  display:flex;align-items:center;gap:11px;background:linear-gradient(145deg,#ecfff5,#e4f8ef);
+  border:1px solid rgba(25,181,109,.14);color:#266d50
+}
+.receipt-share-hint-icon{
+  flex:0 0 auto;width:34px;height:34px;border-radius:12px;display:grid;place-items:center;
+  color:#fff;background:linear-gradient(145deg,#3ddd91,#17b86d);font-size:19px;font-weight:900;
+  box-shadow:0 8px 18px rgba(23,184,109,.20)
+}
+.receipt-share-hint>span:last-child{display:flex;flex-direction:column;gap:2px;min-width:0}
+.receipt-share-hint strong{font-size:11px;font-weight:950}
+.receipt-share-hint small{font-size:9px;line-height:1.35;color:#6b8a7c}
+.receipt-modal-actions{grid-template-columns:.72fr 1.28fr 1.05fr!important;gap:9px!important}
+.receipt-modal-actions button{min-height:49px!important;border-radius:16px!important;font-size:11px!important;transition:transform .15s ease,filter .15s ease!important}
+.receipt-modal-actions button:active{transform:scale(.97)}
+.receipt-message-action{background:#edf2f5!important;color:#607789!important}
+.receipt-share-image{background:linear-gradient(145deg,#3de294,#16b96d)!important;color:#fff!important;box-shadow:0 12px 28px rgba(20,177,103,.23)!important}
+.receipt-pdf-action{border:1px solid rgba(21,153,94,.14)!important;background:linear-gradient(145deg,#0e9360,#08774f)!important;color:#fff!important;box-shadow:0 12px 26px rgba(7,119,79,.18)!important;font-weight:900!important;cursor:pointer}
+.receipt-pdf-action:disabled,.receipt-share-image:disabled{opacity:.55;cursor:wait}
+
+@keyframes refHeroSheen{
+  0%,100%{transform:translateX(-10%) rotate(16deg);opacity:.48}
+  50%{transform:translateX(18%) rotate(16deg);opacity:.78}
+}
+
+html[data-theme='dark'] .app-shell::before{
+  background:radial-gradient(circle at 12% 8%,rgba(35,132,198,.12),transparent 28%),radial-gradient(circle at 88% 18%,rgba(25,198,121,.11),transparent 31%),radial-gradient(circle at 50% 90%,rgba(24,164,116,.07),transparent 34%)
+}
+html[data-theme='dark'] .metric-card,html[data-theme='dark'] .client-card-rich,html[data-theme='dark'] .loan-row,html[data-theme='dark'] .reminder-card{
+  background:linear-gradient(145deg,rgba(12,31,46,.95),rgba(8,24,37,.90))!important;border-color:rgba(255,255,255,.065)!important;box-shadow:0 20px 48px rgba(0,0,0,.20)!important
+}
+html[data-theme='dark'] .modal-card{background:linear-gradient(180deg,#0d2131,#091925)!important;border-color:rgba(255,255,255,.08)!important}
+html[data-theme='dark'] .modal-card input,html[data-theme='dark'] .modal-card select,html[data-theme='dark'] .modal-card textarea{background:#0a1824!important;border-color:rgba(255,255,255,.085)!important;color:#edf6fb!important}
+html[data-theme='dark'] .segmented{background:rgba(255,255,255,.045)!important}
+html[data-theme='dark'] .segmented button.active{background:#122838!important;color:#eff8fd!important;box-shadow:none!important}
+html[data-theme='dark'] .bottom-nav{background:rgba(8,24,37,.83)!important;border-color:rgba(255,255,255,.075)!important;box-shadow:0 22px 60px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.05)!important}
+html[data-theme='dark'] .client-loan-card{background:linear-gradient(145deg,#10283a,#0b202f)!important;border-color:rgba(255,255,255,.06)!important}
+html[data-theme='dark'] .receipt-share-hint{background:linear-gradient(145deg,rgba(24,177,109,.13),rgba(11,66,48,.30));border-color:rgba(53,218,139,.14);color:#72dfaa}
+html[data-theme='dark'] .receipt-share-hint small{color:#8bb3a0}
+html[data-theme='dark'] .receipt-message-action{background:#102737!important;color:#a8bac7!important}
+
+@media(max-width:720px){
+  .app-content{width:min(100% - 28px,680px)!important;padding-top:28px!important}
+  .hero-card{border-radius:31px!important}
+  .metric-card{border-radius:25px!important}
+  .client-card-rich{border-radius:28px!important;padding:16px!important}
+  .risk-panel,.detail-section,.client-stats,.profit-suite,.calendar-card,.calendar-summary,.receipts-section{border-radius:27px!important}
+  .modal-card{border-radius:31px 31px 22px 22px!important}
+  .receipt-modal-actions{grid-template-columns:1fr 1fr!important}
+  .receipt-message-action{grid-column:1/-1!important;order:3}
+  .receipt-share-image{order:1}.receipt-pdf-action{order:2}
+}
+
+@media(max-width:390px){
+  .app-content{width:calc(100% - 22px)!important}
+  .receipt-modal-actions{grid-template-columns:1fr!important}
+  .receipt-message-action{grid-column:auto!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-card::before{animation:none!important}
+  *,*::before,*::after{scroll-behavior:auto!important}
+}
