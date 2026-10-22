@@ -13,6 +13,7 @@ import './money-button.css';
 import './pwa-install.css';
 import './loading-premium.css';
 import './client-experience.css';
+import './client-badge-polish.css';
 import './theme';
 import './pwa-install';
 import './global-modals';
