@@ -8,6 +8,7 @@ import './alerts-payments.css';
 import './payment-policy.css';
 import './pro-suite.css';
 import './nav-polish.css';
+import './header-polish.css';
 import './pwa-install.css';
 import './theme';
 import './pwa-install';
